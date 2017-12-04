@@ -93,7 +93,7 @@ final class SubscribeView: UIView {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 55
+        tableView.rowHeight = 44
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         tableView.separatorColor = .white
@@ -116,6 +116,10 @@ final class SubscribeView: UIView {
     
     convenience init(title: String?, slides: [Slide], options: [Option], cancelMessage: String?) {
         self.init(frame: .zero)
+        setProperties(title: title, slides: slides, options: options, cancelMessage: cancelMessage)
+    }
+    
+    private func setProperties(title: String?, slides: [Slide], options: [Option], cancelMessage: String?) {
         self.title = title
         self.slides = slides
         self.options = options
@@ -143,7 +147,7 @@ final class SubscribeView: UIView {
             UIView.animate(withDuration: duration / 2, delay: 0, options: .allowUserInteraction, animations: {
                 self.collectionView.contentOffset = CGPoint(x: 0, y: 0)
                 self.layoutIfNeeded()
-                }, completion: nil)
+            }, completion: nil)
         }
     }
     
@@ -177,37 +181,37 @@ final class SubscribeView: UIView {
         
         [
             NSLayoutConstraint(item: titleLabel, attribute: .top,
-                relatedBy: .equal, toItem: self, attribute: .top,
-                multiplier: 1, constant: 16),
+                               relatedBy: .equal, toItem: self, attribute: .top,
+                               multiplier: 1, constant: 16),
             NSLayoutConstraint(item: titleLabel, attribute: .leading,
-                relatedBy: .equal, toItem: self, attribute: .leading,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .leading,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: titleLabel, attribute: .trailing,
-                relatedBy: .equal, toItem: self, attribute: .trailing,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .trailing,
+                               multiplier: 1, constant: 0),
             
             NSLayoutConstraint(item: collectionView, attribute: .top,
-                relatedBy: .equal, toItem: titleLabel, attribute: .bottom,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: titleLabel, attribute: .bottom,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: collectionView, attribute: .leading,
-                relatedBy: .equal, toItem: self, attribute: .leading,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .leading,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: collectionView, attribute: .trailing,
-                relatedBy: .equal, toItem: self, attribute: .trailing,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .trailing,
+                               multiplier: 1, constant: 0),
             
             NSLayoutConstraint(item: tableView, attribute: .top,
-                relatedBy: .equal, toItem: collectionView, attribute: .bottom,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: collectionView, attribute: .bottom,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: tableView, attribute: .leading,
-                relatedBy: .equal, toItem: self, attribute: .leading,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .leading,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: tableView, attribute: .trailing,
-                relatedBy: .equal, toItem: self, attribute: .trailing,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .trailing,
+                               multiplier: 1, constant: 0),
             NSLayoutConstraint(item: tableView, attribute: .bottom,
-                relatedBy: .equal, toItem: self, attribute: .bottom,
-                multiplier: 1, constant: 0),
+                               relatedBy: .equal, toItem: self, attribute: .bottom,
+                               multiplier: 1, constant: 0),
             
             tableViewHeightConstraint
             ].flatMap{ $0 }.forEach { $0.isActive = true }
@@ -306,3 +310,4 @@ extension SubscribeView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
 }
+
