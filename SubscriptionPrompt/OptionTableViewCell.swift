@@ -23,7 +23,7 @@ final class OptionTableViewCell: UITableViewCell {
     
     fileprivate func setUpViews() {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .orange
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         selectedBackgroundView = backgroundView
         textLabel?.textAlignment = .center
     }
@@ -42,3 +42,4 @@ extension OptionTableViewCell {
         disclosureType = style.accessoryType
     }
 }
+
